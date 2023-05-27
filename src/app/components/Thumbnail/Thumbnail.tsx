@@ -1,5 +1,5 @@
+import Pills from "../Pill/Pills";
 import styles from "./Thumbnail.module.css";
-import appStyles from "../../app.module.css";
 interface ThumbnailProps {
   id: number;
   image?: string;
@@ -20,16 +20,7 @@ function Thumbnail({ id, name, image, types, clickHandler }: ThumbnailProps) {
       </div>
       <p className={styles.name}>{name}</p>
       <p className={styles.id}>#{id}</p>
-      <div className={styles.types}>
-        {types?.map((type) => (
-          <span
-            className={`${styles.type} background-color-${type}`}
-            key={type}
-          >
-            {type}
-          </span>
-        ))}
-      </div>
+      <Pills types={types ?? []} />
     </div>
   );
 }

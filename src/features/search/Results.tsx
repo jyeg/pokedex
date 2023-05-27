@@ -1,10 +1,11 @@
-import { useAppSelector, useAppDispatch } from "../../app/hooks/hooks";
-import logo from "../../logo.svg";
+import { useAppDispatch } from "../../app/hooks/hooks";
+
 import { addToHistory, setSelectedPokemon } from "./searchSlice";
 import styles from "./Search.module.css";
 import { useSearchPokemonByNameQuery } from "../../app/services/pokemon";
-import Thumbnail from "../../app/components/Thumbnail";
-import { Suspense, useEffect } from "react";
+import Thumbnail from "../../app/components/Thumbnail/Thumbnail";
+import { useEffect } from "react";
+import { Loading } from "../../app/components/Loading/Loading";
 
 export function Results({ searchTerm }: { searchTerm: string }) {
   const {
@@ -20,36 +21,30 @@ export function Results({ searchTerm }: { searchTerm: string }) {
     }
   }, [searchTerm]);
 
-  if (isLoading) {
-    return (
-      <div className="App-loading">
-        <img src={logo} className="App-loader" alt="logo" />
-      </div>
-    );
-  }
-
   if (!isLoading && error) {
     return <div>Something went wrong :(</div>;
   }
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className={styles.resultsContainer}>
-        {pokemon?.length ? (
-          pokemon.map((item) => (
-            <Thumbnail
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              name={item.name}
-              types={item?.types?.map((type) => type.pokemon_v2_type.name)}
-              clickHandler={() => dispatch(setSelectedPokemon(item.id))}
-            />
-          ))
-        ) : (
-          <div>No pokemon found :(</div>
-        )}
-      </div>
-    </Suspense>
+    <div className={styles.resultsContainer} data-testid="results-container">
+      {pokemon?.length ? (
+        pokemon.map((item) => (
+          <Thumbnail
+            key={item.id}
+            id={item.id}
+            image={item.image}
+            name={item.name}
+            types={item?.types?.map((type) => type.pokemon_v2_type.name)}
+            clickHandler={() => dispatch(setSelectedPokemon(item.id))}
+          />
+        ))
+      ) : (
+        <div>No Pokémon found :(</div>
+      )}
+    </div>
   );
 }

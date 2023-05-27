@@ -7,13 +7,18 @@
   height: 75px;
   pointer-events: none;
   margin-bottom: 32px;
+  margin: 25% auto;
+}
+
+.App-loader {
+  height: 100%;
+  width: auto;
 }
 
 .Sidebar {
   flex: 1;
   border-right: 1px solid #ccc;
-
-  background-color: #e0ffff;
+  background-color: rgba(240, 128, 128, 0.278);
   height: 100vh;
   overflow-y: scroll;
 }

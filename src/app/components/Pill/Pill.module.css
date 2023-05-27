@@ -1,0 +1,23 @@
+.types {
+  display: flex;
+}
+
+.type {
+  border-radius: 3px;
+  line-height: 18px;
+  max-width: 110px;
+  margin: 2px;
+  width: 38.4375%;
+  float: left;
+  text-transform: none;
+  font-size: 11px;
+  text-align: center;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.name {
+  font-size: 24px;
+  font-style: bold;
+  margin-bottom: 0.2rem;
+}

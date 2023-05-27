@@ -1,5 +1,3 @@
-import { useRef, useState } from "react";
-
 import { useAppSelector, useAppDispatch } from "../../app/hooks/hooks";
 import {
   selectHistory,
@@ -25,6 +23,7 @@ export function Search() {
           aria-label="Set pokemon search term"
           value={searchTerm}
           className={styles.textbox}
+          data-testid="search-input"
         />
       </div>
       <div className={styles.historyList}>
