@@ -2,41 +2,77 @@
 
 ## Overview
 
-This project should take approximately 2+ hours to complete and help PrizePicks assess your front end knowledge and development style.
+This Pokedex is built with Typescript, CRA, Redux, Redux Toolkit, RTK Query, GraphQL.
 
-If you find the project takes longer than you’d like please submit a functional version of what you have. We're interested in assessing a functioning project even if all of the business requirements are not implemented.
+I really enjoyed this project as there were tons of features I inititally wanted to build. It kinda felt like a game, where I learned a lot about Pokemon and the PokeApi structure at the same time as writing code.
 
-## The Problem
+I decided to use the Graphql endpoint of the pokeapi as it gave me more flexibility with the data I needed and prevented overfetching. This decision ended up costing me the most time as I was working on bolting it into RTK and fetching the correct data from the endpoint.
 
-Ash and his friends are on a new adventure to catch even more Pokemon! Before they set off on this journey they need some tools. As we all know every great Pokemon trainer needs a reliable Pokedex to identify Pokemon. It’s a good thing they have you! Ash has asked if you would be willing to build him a brand new Pokedex with core features and a couple of enhancements.
+### Changes needed for a concurrent environment
 
-## Business Requirements
+If this application was run in a concurrent environment there would be a few concerns for which to account.
+The chief concern being the freshness of the data. This would require the utilization of Websockets, webhooks or graphql subscriptions to keep data up to date.
+
+## App Architecture
+
+Components: contain shared generic components
+Hooks: Reusable hooks
+Services: API Layer using RTK Query and Graphql
+Utilities: Reusable utils
+Features: A grouping of related components, styles and tests around a specific piece of business logic/functionality.
+
+## Requirements Not Met
+
+I wasnt able to finish the detail tabs within time.
+I intentionally chose to stop tweaking styling and building bonus features as I was spending too much time on it. Instead I spent more time thinking about the server state and state management.
+
+[]Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.
+
+## Requirements Met
 
 Please attempt to implement the following business requirements:
 
-- Use the Pokemon API to make API requests for data https://pokeapi.co/docs/v2.
-- Able to search for any Pokemon.
-- Able to see a history of what has been searched and revisit at anytime.
+[x]Use the Pokemon API to make API requests for data https://pokeapi.co/docs/v2.
+[x]Able to search for any Pokemon.
+[x]Able to see a history of what has been searched and revisit at anytime.
 
-## Technical Requirements
+### Technical Requirements
 
 The following technical requirements must be met:
 
-- You are allowed to use scaffolding technology like “Create React App” or similar.
-- This project should be done with the latest React framework.
-- This project should be done with the latest Redux framework.
-- This project should be done using TypeScript.
-- This project should be done using version control, preferably git.
-- This project can be styled with SCSS/CSS or Styled Components if anything needs to be styled.
-- This project should include a README that addresses anything you may not have completed.
-  - It should also address what additional changes you might need to make if the application were intended to run in a concurrent environment. Any other comments or thoughts about the project are also welcome.
+[x]You are allowed to use scaffolding technology like “Create React App” or similar.
+[x]This project should be done with the latest React framework.
+[x]This project should be done with the latest Redux framework.
+[x]This project should be done using TypeScript.
+[x]This project should be done using version control, preferably git.
+[x]This project can be styled with SCSS/CSS or Styled Components if anything needs to be styled.
+[x]This project should include a README that addresses anything you may not have completed.
 
-## Bonus Points
+- It should also address what additional changes you might need to make if the application were intended to run in a concurrent environment. Any other comments or thoughts about the project are also welcome.
 
-- Able to see details about abilities, moves, species, sprites and types upon searching.
-- Able to see other evolutions of Pokemon and be able to navigate to specific Pokemon in the evolution chain.
-- A sleek and intuitive layout that resembles a Pokedex.
-- Automated tests that ensure the business logic implemented is correct.
+### Bonus Points
+
+[X]Able to see details about abilities, moves, species, sprites and types upon searching.
+
+[X]A sleek and intuitive layout that resembles a Pokedex.
+[X]Automated tests that ensure the business logic implemented is correct.
+
+## Next Steps
+
+- Enhance middlewares to write to redux state in RTK Query using a thunk.
+- Add persistence of cache so data isnt lost on each reload.
+- Mobile friendly
+- E2E tests
+- Add Routing
+- Transitions
+- Better styling/ux
+- Remove modules in favor of tailwinds tokens or SCSS
+- Relative paths
+- Auto complete
+- Remove unused CSS
+- Utilize React Suspense
+- Code splitting
+- Ability to clear history
 
 ## Submission Requirements
 
